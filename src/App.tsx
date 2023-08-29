@@ -22,12 +22,12 @@ const App: FC = () => {
     [setTaskInput],
   );
 
-  const addItem = useCallback(() => {
+  const addTodoItem = useCallback(() => {
     setTodoList((prev) => prev.concat([{ name: taskInput.trim(), status: "TODO" }]));
     setTaskInput("");
   }, [taskInput, setTaskInput, setTodoList]);
 
-  const removeItem = useCallback(
+  const removeTodoItem = useCallback(
     (index: number) => {
       setTodoList((prev) => {
         const newTodo = prev.slice();
@@ -38,7 +38,7 @@ const App: FC = () => {
     [setTodoList],
   );
 
-  const finishItem = useCallback(
+  const finishTodoItem = useCallback(
     (index: number) => {
       setTodoList((prev) => {
         const newTodo = prev.slice();
@@ -68,7 +68,7 @@ const App: FC = () => {
           <button
             className="btn btn-primary"
             disabled={taskInput.trim().length === 0}
-            onClick={addItem}
+            onClick={addTodoItem}
           >
             Add
           </button>
@@ -81,8 +81,8 @@ const App: FC = () => {
       </div>
       <TodoList
         todoList={todoList}
-        removeItem={removeItem}
-        finishItem={finishItem}
+        removeItem={removeTodoItem}
+        finishItem={finishTodoItem}
       />
     </div>
   );
