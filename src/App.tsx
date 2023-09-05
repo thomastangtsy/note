@@ -23,7 +23,9 @@ const App: FC = () => {
   );
 
   const addTodoItem = useCallback(() => {
-    setTodoList((prev) => prev.concat([{ name: taskInput.trim(), status: "TODO" }]));
+    setTodoList((prev) =>
+      prev.concat([{ name: taskInput.trim(), status: "TODO" }]),
+    );
     setTaskInput("");
   }, [taskInput, setTaskInput, setTodoList]);
 
